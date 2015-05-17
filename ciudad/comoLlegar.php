@@ -1,0 +1,9 @@
+
+   <div>
+      <h4 name="autobus" id="autobus">Desde la estación de autobuses:</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m29!1m12!1m3!1d50857.802856211165!2d-3.6529027673740067!3d37.18567467605567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m14!1i0!3e6!4m5!1s0xd71fd028044e605%3A0x5cfb33326a1f976!2sEstaci%C3%B3n+de+Autobuses+de+Granada%2C+Calle+Minerva%2C+Granada!3m2!1d37.199582!2d-3.614076!4m5!1s0xd71fca304958221%3A0xab683a46be9a1163!2sPalacio+de+Congresos%2C+18006%2C+Granada!3m2!1d37.165663599999995!2d-3.5985141!5e0!3m2!1ses!2ses!4v1427211075206" width="100%" height="50%" frameborder="0" style="border:0"></iframe>
+      <h4 name="avion" id="avion">Desde el aeropuerto:</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m29!1m12!1m3!1d101695.51887389405!2d-3.762901575954144!3d37.200586549991066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m14!1i0!3e6!4m5!1s0xd7201ae692e9a55%3A0xcbd3ce42b1495573!2sAeropuerto+Federico+Garcia+Lorca%2C+Carretera+de+Malaga%2C+18329+Chauchina%2C+Granada!3m2!1d37.187312999999996!2d-3.7780419999999997!4m5!1s0xd71fca304958221%3A0xab683a46be9a1163!2sPalacio+de+Congresos%2C+18006%2C+Granada!3m2!1d37.165663599999995!2d-3.5985141!5e0!3m2!1ses!2ses!4v1427210890418" width="100%" height="50%" frameborder="0" style="border:0"></iframe>
+      <h4 name="tren" id="tren">Desde la estación de trenes</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m29!1m12!1m3!1d25433.35325839742!2d-3.624864778413584!3d37.17245076922692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m14!1i0!3e6!4m5!1s0xd71fcee8787bf51%3A0x5b1309cc74400c31!2sGranada!3m2!1d37.184038!2d-3.6091539999999998!4m5!1s0xd71fca304958221%3A0xab683a46be9a1163!2sPalacio+de+Congresos%2C+18006%2C+Granada!3m2!1d37.165663599999995!2d-3.5985141!5e0!3m2!1ses!2ses!4v1427211137141" width="100%" height="50%" frameborder="0" style="border:0"></iframe>     
+   </div>
