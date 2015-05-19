@@ -1,0 +1,2 @@
+Descargartelo: git pull
+Subir archivos: git commit -a | git push
