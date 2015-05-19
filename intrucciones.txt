@@ -1,2 +1,2 @@
 Descargartelo: git pull
-Subir archivos: git commit -a | git push
+Subir archivos: git add . | git commit -a (PONER COMENTARIO)Esc->ZZ | git push
