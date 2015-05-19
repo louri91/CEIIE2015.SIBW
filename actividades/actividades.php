@@ -2,9 +2,27 @@
 	include_once('dbConnect.php');
 	$result;
 	$conn=dbConnect();
-	$idActividad = $_GET['id'];
+	if(isset($_GET['id'])){
+		$idActividad = $_GET['id'];
+		$queryActividad = "SELECT * FROM ceiie2015.Actividad WHERE ceiie2015.Actividad.idActividad=$idActividad";
+		$resultadoActividad = $conn->query($queryActividad);
+		$rowActividad = $resultadoActividad->fetchAll();
+		$queryImagenes = "SELECT * FROM ceiie2015.Imagen WHERE ceiie2015.imagen.Actividad_idActividad=$idActividad";
+		$resultImagenes = $conn->query($queryImagenes);
+    	$rowImagenes = $resultImagenes->fetchAll();
+    	foreach ($rowActividad as $actividad) {
+?>
+    	<h3><?php echo $actividad['nombreActividad'];?></h3>
+    	<p class='parrafo'><?php echo $actividad['descripcionActividad'];?></p>
+    	<p class='parrafo'>Precio: <?php echo $actividad['precio'];?></p>
+    	<?php 
+    	foreach ($rowImagenes as $imagen) {?>
+    		<img src="<?php echo $imagen['rutaImagen'];?>" width=80% style='margin:0.5%'>
+    	<?php }    
+    }
+
+	}else{
 	$query = "SELECT * FROM ceiie2015.Actividad";
-	$queryActividad = "SELECT * FROM ceiie2015.Actividad WHERE ceiie2015.Actividad.idActividad=$idActividad";
 	$result = $conn->query($query);
     $rows = $result->fetchAll();
 
@@ -22,4 +40,6 @@
     		<img src="<?php echo $imagen['rutaImagen'];?>" width=80% style='margin:0.5%'>
     	<?php }
     }
+}
+$conn=null;
 ?>
