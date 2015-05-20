@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=co2">Procesamiento del Habla, por Z.Callejas</a></h4>

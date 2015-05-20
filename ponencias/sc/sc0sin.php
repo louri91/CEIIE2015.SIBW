@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=sc0">Programación Paralela, por J.M.Mantas</a></h4>

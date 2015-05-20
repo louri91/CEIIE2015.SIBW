@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=bd1"> Bases de Datos Orientadas a Objetos, por J.Samos</a></h4>

@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=co1"> Traductores, por R.López-Cózar</a></h4>

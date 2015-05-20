@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=bd0"> Bases de Datos Multidimensionales, por E.Garví</a></h4>

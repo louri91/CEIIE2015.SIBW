@@ -1,1 +1,0 @@
-          <h4><a href="index.php?categoria=ig0">Visualización y Realismo, por C.Ureña</a></h4>

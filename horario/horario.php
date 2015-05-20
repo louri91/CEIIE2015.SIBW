@@ -23,7 +23,7 @@
         <td><a href="index.php?categoria=inso">ING. SOFTWARE</a><br> 
         <?php foreach ($rows as $row) { 
         if($row['temaPonencia']=='inso') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
         <?php }
         }?>
         </td>
@@ -31,7 +31,7 @@
             <a href="index.php?categoria=so">SISTEMAS OPERATIVOS</a><br> 
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='so') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
         <td>Aún por determinar</td>
@@ -47,14 +47,14 @@
         <td><a href="index.php?categoria=ig">INFORMÁTICA GRÁFICA</a><br>
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='ig') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
           </td>
         <td><a href="index.php?categoria=sc">SISTEMAS COMPLEJOS</a><br>
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='sc') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
             </td>
@@ -71,14 +71,14 @@
         <td><a href="index.php?categoria=bd">BASES DE DATOS</a> <br> 
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='bd') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
             </td>
         <td><a href="index.php?categoria=iu">INTERFACES DE USUARIO</a> <br> 
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='iu') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
             </td>
@@ -95,7 +95,7 @@
         <td><a href="index.php?categoria=co">COMPILADORES</a> <br> 
         <?php foreach ($rows as $row) { 
           if($row['temaPonencia']=='co') { ?>
-            <a href="index.php?categoria='<?php echo $row['idPonencia']?>'"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
+            <a href="index.php?categoria=<?php echo $row['idPonencia']?>"><b><?php echo $row['nombrePonencia'];?></b></a>, por <?php echo $row['nombreAutor'];?><br>
             <?php }
             }?>
             </td>
