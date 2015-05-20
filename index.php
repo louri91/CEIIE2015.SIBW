@@ -2,7 +2,10 @@
 <?php include 'header.php';?>
 <body><div id="panelCentral">
 <?php 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria']:'index';
+$categoria = isset($_GET['categoria']) ? $_GET['categoria']:'';
+if(isset($_GET['idPonencia'])){
+	include 'ponencias/ponencias.php';
+}
 switch ($categoria) {
 	case 'index':
 		include 'index/indexContent.php';
@@ -40,25 +43,10 @@ switch ($categoria) {
 		include 'contacta/contacto.php';	
 		break;
 	default:
-		include 'index/indexContent.php';
 		break;
-
 }
 ?></div><div id="panelLateral">
-<?php 
-switch ($categoria) {
-	case 'inso':
-	case 'so':
-	case 'ig':
-	case 'sc':
-	case 'bd':
-	case 'iu':
-	case 'co':
-	/* Aquí hay que poner todos los menús contextuales. */
-		break;
-	default:
-		break;
-}
+<?php
 include 'sidebar.php';?>
 
 </div>

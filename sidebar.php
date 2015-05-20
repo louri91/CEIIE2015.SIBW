@@ -1,3 +1,26 @@
+<?php if(isset($_GET['idPonencia'])){
+	$idPonencia = $_GET['idPonencia'];
+	include_once('dbConnect.php');
+	$conn=dbConnect();
+	$query = "SELECT * FROM ceiie2015.Ponencia WHERE ceiie2015.Ponencia.idPonencia=$idPonencia";
+	$result = $conn ->query($query);
+	$row = $result->fetchAll();?>
+	<h3>Más ponencias de la sesión</h3>
+	<?php
+	foreach ($row as $r) {
+		$temaPonencia = $r['temaPonencia'];
+		$queryPon = "SELECT * FROM ceiie2015.Ponencia WHERE ceiie2015.Ponencia.temaPonencia='$temaPonencia'";
+		$resultadoPon = $conn->query($queryPon);
+		$rowsPon = $resultadoPon->fetchAll();
+		foreach ($rowsPon as $pon) {
+			if($pon['idPonencia']!=$idPonencia){?>
+			<h4><a href="index.php?idPonencia=<?php echo $pon['idPonencia'];?>"><?php echo $pon['nombrePonencia'];?>, por <?php echo $pon['nombreAutor'];?></a></h4>
+	<?php }}  
+	}
+}
+$conn = null;
+?>
+
 <h4><b>Fechas Importantes:</b></h4> 4, 5 y 6 de Junio
 <h4><b>Enlaces Importantes</b></h4>
 <a href="http://etsiit.ugr.es">ETSIIT</a><br>
