@@ -8,7 +8,7 @@
    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
    <title>CEIIE 2015</title>
    <div id='header-login'>
-    <a href="contacta/formularioLogin.html"><font color="#fff">Login</a></font> <br> <a href="contacta/formularioRegistro.html"><font color="#fff">Registrarse</font></a>
+    <a href="index.php?categoria=login"><font color="#fff">Login</a></font> <br> <a href="index.php?categoria=registro"><font color="#fff">Registrarse</font></a>
    </div>
       <div id="header-titulo">CEIIE 2015<br>I Congreso de Estudiantes de Ingeniería Informática en España</div>
    <div id='header-contacto'>

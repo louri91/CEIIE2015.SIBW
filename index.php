@@ -42,6 +42,12 @@ switch ($categoria) {
 	case 'contacta':
 		include 'contacta/contacto.php';	
 		break;
+	case 'login':
+		include 'contacta/formularioLogin.html';
+		break;
+	case 'registro':
+		include 'contacta/formularioRegistro.html';
+		break;
 	default:
 		break;
 }
