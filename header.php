@@ -8,7 +8,18 @@
    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
    <title>CEIIE 2015</title>
    <div id='header-login'>
+       <?php 
+       session_start();
+       if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true)
+       {
+           ?><font color="#fff"><?php echo "Sesión iniciada como:".$_SESSION['nombre_perfil']; ?><br>
+               <a href="contacta/script_cerrar_sesion.php"><font color="#fff">Cerrar sesión</a>
+               <?php
+       }
+       else
+       {?>
     <a href="index.php?categoria=login"><font color="#fff">Login</a></font> <br> <a href="index.php?categoria=registro"><font color="#fff">Registrarse</font></a>
+        <?php } ?>
    </div>
       <div id="header-titulo">CEIIE 2015<br>I Congreso de Estudiantes de Ingeniería Informática en España</div>
    <div id='header-contacto'>

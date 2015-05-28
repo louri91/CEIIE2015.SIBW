@@ -3,21 +3,24 @@
          <legend>
             <h2>Login</h2>
          </legend>
-         <input type="text" class="form-control" placeholder="Nombre de Usuario" style="width:60%" required>
-         <input type="password" class="form-control" placeholder="Contraseña" style="width:100%" required>
+		 <form id="formularioLogin" action="contacta/script_formularioLogin.php" method="post">
+         <input type="text" name="login_name" class="form-control" placeholder="Nombre de Usuario" style="width:60%" required>
+         <input type="password" name="login_pass" class="form-control" placeholder="Contraseña" style="width:100%" required>
          <div style="text-align:center">
-         <button type="button" class="btn btn-primary" onClick="javascript:validarContacto(formularioContacto);">Login</button></div>
+         <button type="submit" class="btn btn-primary">Login</button></div>
+		 </form>
       </fieldset>
       <fieldset class="inscripcion" style="float:left;margin-left:5%">
          <legend>
             <h2>Registro</h2>
          </legend>
-         <input type="text" class="form-control" placeholder="Nombre" style="width:60%" required>
-         <input type="text" class="form-control" placeholder="Apellidos" style="width:60%" required>
-         <input type="email" class="form-control" placeholder="Correo Electrónico" style="width:60%" required>
-         <input type="password" class="form-control" placeholder="Contraseña" style="width:100%" required>
-         <input type="tel" class="form-control" placeholder="Teléfono" style="width:60%" required>
+		 <form id="formularioRegistro" action="contacta/script_formularioRegistro.php" method="post">
+         <input type="text" name="reg_name" class="form-control" placeholder="Nombre" style="width:60%" required>
+         <input type="text" name="reg_subname" class="form-control" placeholder="Apellidos" style="width:60%" required>
+         <input type="email" name="reg_mail" class="form-control" placeholder="Correo Electrónico" style="width:60%" required>
+         <input type="password" name="reg_pass" class="form-control" placeholder="Contraseña" style="width:100%" required>
+         <input type="tel" name="reg_tel" class="form-control" placeholder="Teléfono" style="width:60%" required>
          <div style="text-align:center">
-         <button type="button" class="btn btn-primary" onClick="javascript:validarContacto(formularioContacto);">Registrar</button>
+         <button type="submit" class="btn btn-primary">Registrar</button>
          </div>
       </fieldset>
