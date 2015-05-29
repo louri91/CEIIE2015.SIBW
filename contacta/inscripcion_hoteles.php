@@ -10,7 +10,7 @@
     }
 </style>
     <ol class="breadcrumb">
-      <li class="active"><a href="index.php?categoria=inscripcion&p=0">Datos Personales</a></li>
+      <li class="active"><a href="index.php?categoria=inscripcion">Datos Personales</a></li>
       <li><a href="#">Actividades</a></li>
       <li><a href="#">Alojamiento</a></li>
     </ol>
