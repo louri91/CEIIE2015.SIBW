@@ -15,7 +15,6 @@
         <th>Dirección</th>
         <th>Correo electrónico</th>
         <th>Telefono</th>
-        <th>Inscripción</th>
       </tr>
     </thead>
     <tbody>
@@ -28,12 +27,11 @@
 
     foreach ($rowsUsuarios as $usuario) {
     	echo '<tr>';
-    	echo '<td>' .$usuario['nombre'].'</td>';
+    	echo '<td><a href="index.php?categoria=inscripcionAdmin&inscripcion='.$inscripcionUsuario['idInscripcion'].'">'.$usuario['nombre'].'</a></td>';
     	echo '<td>' .$usuario['apellidos'].'</td>';
     	echo '<td>' .$usuario['direccion'].'</td>';
     	echo '<td>' .$usuario['correo'].'</td>';
     	echo '<td>' .$usuario['telefono'].'</td>';
-    	echo '<td><a href="index.php?categoria=inscripcionAdmin&inscripcion='.$inscripcionUsuario['idInscripcion'].'">Ver detalles de inscripción</a></td>';
     	echo '</tr>';
     }
 

@@ -7,10 +7,12 @@ if(isset($_GET['categoria'])){
 } else{
 	$categoria='index';
 }
+if(isset($_GET['p'])){
+	$paso = $_GET['p'];
+}
 if(isset($_GET['idPonencia'])){
 	include 'ponencias/ponencias.php';
 }
-
 switch ($categoria) {
 	case 'index':
 		include 'index/indexContent.php';
@@ -19,8 +21,22 @@ switch ($categoria) {
 		include 'horario/horario.php';
 		break;
 	case 'inscripcion':
-		include 'contacta/inscripcion.php';
-		break;		
+		if(isset($_GET['p'])){
+			switch ($paso) {
+				case 0:
+					include 'contacta/inscripcion.php';
+					break;
+				case 1:
+					include 'contacta/inscripcion_actividades.php';
+					break;
+				case 2:
+					include 'contacta/inscripcion_hoteles.php';
+					break;
+			}
+		}else{
+			include 'contacta/inscripcion.php';
+		}
+		break;
 	case 'actividades':
 		isset($_GET['id']) ? $_GET['id']:'index';
 		include 'actividades/actividades.php';

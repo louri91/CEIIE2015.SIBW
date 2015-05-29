@@ -68,6 +68,66 @@ function sliders()
 	swapImages();
 }
 
+function guardarValoresUsuario(formularioInscripcion){
+
+	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
+	{
+		alert("Los correos electrónicos tienen que ser iguales");
+		return false;
+	}
+	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
+	{
+		alert("Las contraseñas no coinciden");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+
+
+function guardarValoresActividades(formularioActividades){
+
+	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
+	{
+		alert("Los correos electrónicos tienen que ser el mismo");
+		return false;
+	}
+	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
+	{
+		alert("Las contraseñas no coinciden");
+		return false;
+	}
+	else
+	{
+		document.cookie = 'Usuario' + "=" + formularioInscripcion.nombre.value + ';' + formularioInscripcion.apellidos.value + ';' + formularioInscripcion.centro.value + ';' + formularioInscripcion.direccion.value + ';' + formularioInscripcion.telefono.value + ';' + formularioInscripcion.correo.value + ';' + formularioInscripcion.pass.value + ';' + formularioInscripcion.tipo_cuota + ";"
+		alert("Datos almacenados correctamente");
+		return true;
+	}
+	return false;
+}
+
+function guardarValoresAlojamiento(formularioAlojamiento){
+
+	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
+	{
+		alert("Los correos electrónicos tienen que ser el mismo");
+		return false;
+	}
+	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
+	{
+		alert("Las contraseñas no coinciden");
+		return false;
+	}
+	else
+	{
+		document.cookie = 'Usuario' + "=" + formularioInscripcion.nombre.value + ';' + formularioInscripcion.apellidos.value + ';' + formularioInscripcion.centro.value + ';' + formularioInscripcion.direccion.value + ';' + formularioInscripcion.telefono.value + ';' + formularioInscripcion.correo.value + ';' + formularioInscripcion.pass.value + ';' + formularioInscripcion.tipo_cuota + ";"
+		alert("Datos almacenados correctamente");
+		return true;
+	}
+	return false;
+}
+
 
 
 window.onload=sliders;

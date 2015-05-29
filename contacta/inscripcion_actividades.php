@@ -1,76 +1,75 @@
-      <?php include 'apiConnect.php'; 
-      /*
-      Incluimos la conexión a la API;
-      */
-            $hoteles = getHoteles();
-      ?>
+<?php 
+    if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['centro']) && isset($_POST['telefono']) && isset($_POST['correo']) && isset($_POST['pass']) && isset($_POST['tipo_cuota'])) 
+    {   
+        include_once('dbConnect.php');
+        $conn=dbConnect();
+        $nombre = $_POST['nombre'];//
+        $apellidos = $_POST['apellidos'];//
+        $centro = $_POST['centro'];
+        $direccion = $_POST['direccion'];
+        $telefono = $_POST['telefono'];//
+        $correo = $_POST['correo'];//
+        $pass = $_POST['pass'];//
+        $tipo_cuota = $_POST['tipo_cuota'];
+        $datosUsuario = array($nombre, $apellidos, $direccion, $centro, $telefono, $correo, $pass, $tipo_cuota);
+
+    }
+    if(!isset($_COOKIE['usuario'])){
+        setcookie('usuario', serialize($datosUsuario), time()+3600, "/");
+    }
+
+    if(isset($_COOKIE['usuario'])){
+        $cookieUsuario = $_COOKIE['usuario'];
+        $datos = unserialize($cookieUsuario);
+        if(in_array($nombre, $datos)){
+            echo 'He creado la cookieeeeeeeee';
+        }else{
+            echo 'No he creado la cookie porque soy gilipollas';
+        }
+    }
+
+
+    if($_POST['correo']!=$_POST['correo_conf']){
+            echo '<script language="javascript">alert("Las direcciones de correo tienen que ser iguales");</script>';
+            header( "Refresh:1; url=index.php?categoria=inscripcion&p=1", false, 303);
+    }   
+    if($_POST['pass']!=$_POST['pass_conf']){
+        echo '<script language="javascript">alert("Las contraseñas no coinciden");</script>';
+        header( "Refresh:1; url=index.php?categoria=inscripcion&p=1", false, 303);
+    }
+
+?>
+
 <style>
-    input[type=checkbox]{
+    input[type=checkbox]
+    {
     display:inline;
     }
 </style>
-    <ol class="breadcrumb">
-      <li class="active"><a href="index.php?categoria=inscripcion">Datos Personales</a></li>
-      <li><a href="#">Actividades</a></li>
-      <li><a href="#">Alojamiento</a></li>
+   <ol class="breadcrumb">
+      <li><a href="index.php?categoria=inscripcion&p=0">Datos Personales</a></li>
+      <li class="active"><a href="index.php?categoria=inscripcion&p=1">Actividades</a></li>
+      <li><a href="index.php?categoria=inscripcion&p=2">Alojamiento</a></li>
     </ol>
-      <fieldset class="inscripcion">
-         <legend><h2>Datos de inscripción</h2></legend>
-         <form id="formularioInscripcion" action="contacta/script_inscripcion.php" method="post">
-         <select class="form-control" name="tipo_cuota">
-             <?php 
-             //Consutlamos las cuotas de la base de datos y rellenamos la lista
-            include_once('dbConnect.php');
-            $conn=dbConnect();
-            $queryCuotas = "SELECT * FROM ceiie2015.cuota";
-            $resultadoCuotas = $conn->query($queryCuotas);
-            $rowsCuotas = $resultadoCuotas->fetchAll();
-            foreach ($rowsCuotas as $cuota) 
-            {
-                if($cuota['idCuota']=='1'){
-                    $tipoCuotaSeleccionada = $cuota['idCuota'];
-                    echo "<option selected value=".$cuota['idCuota'].">".$cuota['descripcionCuota']." -> ".$cuota['precioCuota']."€ </option>";
-
-                }
-                else
-                {
-                    echo "<option value=".$cuota['idCuota'].">".$cuota['descripcionCuota']." -> ".$cuota['precioCuota']."€ </option>";
-                }
-            }
-             ?>
-         </select>
-         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
-         <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
-         <input type="text" name="centro" class="form-control" placeholder="Centro de Trabajo" required>
-         <input type="text" name="direccion" class="form-control" placeholder="Direccion" required>
-         <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required>
-         <input type="email" name="correo" class="form-control" placeholder="Dirección de correo" required>
-         <input type="email" name="correo_conf" class="form-control" placeholder="Confirmar dirección de correo" required>
-         <input type="password" name="pass" class="form-control" placeholder="Contraseña" required>
-         <input type="password" name="pass_conf" class="form-control" placeholder="Confirmar contraseña" required>
-         <fieldset>
-             <legend>
+    <fieldset class="inscripcion">
                  <h2>Actividades incluidas:</h2>
-             </legend>
+                 <form id="formularioActividades" action="index.php?categoria=inscripcion&p=2" method="post">
              <?php
-                 if(isset($tipoCuotaSeleccionada)) {
-                    $queryActividadesIncluidas = "SELECT * FROM ceiie2015.Actividad_has_cuota WHERE Cuota_idCuota='".$tipoCuotaSeleccionada."'";
+                 if(isset($tipo_cuota)) {
+                    $queryActividadesIncluidas = "SELECT * FROM ceiie2015.Actividad_has_cuota WHERE Cuota_idCuota='".$tipo_cuota."'";
                     $resultadosActCuotas = $conn -> query($queryActividadesIncluidas);
                     $rowsActCuotas = $resultadosActCuotas->fetchAll();
                     foreach ($rowsActCuotas as $actividadIncluida) {
                         $actividad_cuota = "SELECT * FROM ceiie2015.Actividad WHERE idActividad='".$actividadIncluida['Actividad_idActividad']."'";
                         $res = $conn->query($actividad_cuota);
                         $rowsAct = $res->fetch();
-                        echo "<input type='checkbox' class='form-control' class='actividades' style='width:6%;height:3%;' disabled readonly/>".$rowsAct['nombreActividad']."<br>";
+                        echo "<input type='checkbox' class='form-control' class='actividades' style='width:6%;height:3%;' checked disabled />".$rowsAct['nombreActividad']."<br>";
                     }
                 }
              ?>
-
-         </fieldset>
-         <fieldset>
-         <legend><h2>Actividades extra:</h2></legend>
+        <h2>Actividades extra:</h2>
              <?php 
-             //Consutlamos las cuotas de la base de datos y rellenamos la lista
+
             $queryActividades = "SELECT * FROM ceiie2015.actividad;";
             $resultadoActividades = $conn->query($queryActividades);
             $rowsActividades = $resultadoActividades->fetchAll();
@@ -84,25 +83,8 @@
                 }
             }
             ?>
-         </fieldset>
-         <br>
-         <fieldset>
-         <legend><h2>(Opcional) Hotel:</h2></legend>
-         <select name="hotel" class="form-control" style="width:100%">
-         <option value="ninguno">Ninguno</option>
-            <?php foreach ($hoteles as $hotel => $value) {
-                  echo "<option value=".$value['codigoHotel'].">Hotel: ";
-                  echo $value['nombreHotel'];
-                  //echo $hotel;
-                  ' </option>';
-            }?>  
-         </select>
-         <button type="button" onclick="" class="btn btn-primary">Opciones</button>
-
-         </fieldset>
-         <br>
-         <div style="text-align:center">
-             <button type="submit" class="btn btn-primary">Inscribirme</button>
-         </div>
-         </form>
-      </fieldset>
+            <div style="text-align:right">
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+            </div>
+    </fieldset>
+         
