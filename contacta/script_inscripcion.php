@@ -4,18 +4,20 @@
      * En el caso de que existe el usuario que ha iniciado sesi�n, asignamos
      * las variables globales de nombre_perfil y sesion_iniciada.
      */
+
     if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['centro']) && isset($_POST['telefono']) && isset($_POST['correo']) && isset($_POST['pass']) && isset($_POST['tipo_cuota'])) 
     {	
         include_once('../dbConnect.php');
         $conn=dbConnect();
         $nombre = $_POST['nombre'];//
         $apellidos = $_POST['apellidos'];//
-        //$centro = $_POST['centro'];
+        $centro = $_POST['centro'];
+        $direccion = $_POST['direccion'];
         $telefono = $_POST['telefono'];//
         $correo = $_POST['correo'];//
         $pass = $_POST['pass'];//
         $tipo_cuota = $_POST['tipo_cuota'];
-        $queryUsuario = "INSERT INTO usuario (correo,pass,nombre,apellidos,direccion) values ('".$correo."','".$pass."','".$nombre."','".$apellidos."','".$telefono."')";
+        $queryUsuario = "INSERT INTO usuario (correo,pass,nombre,apellidos,telefono,direccion) values ('".$correo."','".$pass."','".$nombre."','".$apellidos."','".$telefono."','".$direccion."')";
         $resultadoRegistro = $conn->query($queryUsuario);
         if ($resultadoRegistro == true) 
         {
@@ -39,7 +41,8 @@
                         array_push($actividades_marcadas, $actividad['idActividad']);
                     }  
             }
-            $queryInsertInscripcion = "INSERT INTO inscripcion (precioFinal,Cuota_idCuota,Usuario_correo) values ('".$precio."','".$tipo_cuota."','".$correo."')";
+            $fechaInscripcion = date('Y-m-d H:i:s');
+            $queryInsertInscripcion = "INSERT INTO inscripcion (precioFinal,fechaInscripcion,Cuota_idCuota,Usuario_correo,centroTrabajo) values ('".$precio."','".$fechaInscripcion."','".$tipo_cuota."','".$correo."','".$centro."')";
             $resultadoInsertInscripcion = $conn->query($queryInsertInscripcion);
             if ($resultadoInsertInscripcion == true) 
             {

@@ -12,7 +12,7 @@
        session_start();
        if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true)
        {
-           ?><font color="#fff"><?php echo "Sesión iniciada como:".$_SESSION['nombre_perfil']; ?><br>
+           ?><font color="#fff"><?php echo "¡Hola ".$_SESSION['nombre_perfil']. "!"; ?><br>
                <a href="contacta/script_cerrar_sesion.php"><font color="#fff">Cerrar sesión</a>
                <?php
        }

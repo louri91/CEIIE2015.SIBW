@@ -54,8 +54,24 @@ switch ($categoria) {
 	    include 'contacta/recordar.php';
 	    break;
 	case 'congresistas':
-		include 'admin/scriptCongresistas.php';
+		if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
+			if($_SESSION['nombre_perfil']=='admin'){
+				include 'admin/scriptCongresistas.php';
+			}
+		}
 		break;
+	case 'inscripcionAdmin':
+		if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
+			if($_SESSION['nombre_perfil']=='admin'){
+				if(isset($_GET['inscripcion'])){
+						$inscripcion = $_GET['inscripcion'];
+						include 'admin/scriptInscripcionUsuarios.php';
+
+				}
+			}
+		}
+		break;
+		
 	default:
 		break;
 }
