@@ -1,11 +1,16 @@
 <html>
 <?php include 'header.php';?>
 <body><div id="panelCentral">
-<?php 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria']:'';
+<?php
+if(isset($_GET['categoria'])){
+	$categoria = isset($_GET['categoria']) ? $_GET['categoria']:'';
+} else{
+	$categoria='index';
+}
 if(isset($_GET['idPonencia'])){
 	include 'ponencias/ponencias.php';
 }
+
 switch ($categoria) {
 	case 'index':
 		include 'index/indexContent.php';
@@ -45,8 +50,11 @@ switch ($categoria) {
 	case 'login':
 		include 'contacta/formularioLogin.html';
 		break;
-	case 'registro':
-		include 'contacta/formularioRegistro.html';
+    case 'recordar':
+	    include 'contacta/recordar.php';
+	    break;
+	case 'congresistas':
+		include 'admin/scriptCongresistas.php';
 		break;
 	default:
 		break;
@@ -54,7 +62,6 @@ switch ($categoria) {
 ?></div><div id="panelLateral">
 <?php
 include 'sidebar.php';?>
-
 </div>
 </body>
 <?php include 'footer.php';?>

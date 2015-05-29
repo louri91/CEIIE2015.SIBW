@@ -19,6 +19,12 @@
 	}
 }
 $conn = null;
+
+if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
+	if($_SESSION['nombre_perfil']=='admin'){
+		echo '<h3><a href="index.php?categoria=congresistas">Ver Congresistas</a></h3>';
+	}
+}
 ?>
 
 <h4><b>Fechas Importantes:</b></h4> 4, 5 y 6 de Junio

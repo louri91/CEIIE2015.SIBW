@@ -18,7 +18,7 @@
        }
        else
        {?>
-    <a href="index.php?categoria=login"><font color="#fff">Login</a></font> <br> <a href="index.php?categoria=registro"><font color="#fff">Registrarse</font></a>
+    <a href="index.php?categoria=login"><font color="#fff">Login</a></font>
         <?php } ?>
    </div>
       <div id="header-titulo">CEIIE 2015<br>I Congreso de Estudiantes de Ingeniería Informática en España</div>

@@ -16,7 +16,8 @@
 		$queryLogin = "INSERT INTO usuario (correo,pass,nombre,apellidos,direccion) values ('".$mail."','".$pass."','".$nombre."','".$apellidos."','".$telefono."')";
 		$resultadoRegistro = $conn->query($queryLogin);
         if ($resultadoRegistro != false) {
-            header('location: ../index.php?categoria=index');
+            echo "Se ha registrado con existo. Por favor, espere un segundo.";
+            header( "Refresh:5; url=../index.php?categoria=index", true, 303);
         }
         else
         {

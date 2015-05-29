@@ -280,6 +280,7 @@ fieldset[disabled] .btn-primary.active {
   padding-bottom:3%;
   padding-left: 5%;
   padding-right: 5%;
+  color: #000000;
 }
 .form-control {
   display: block;

@@ -28,7 +28,7 @@ function getHoteles(){
 	return $result;
 }
 
-function getImagenes($codigoHotel){
+/*function getImagenes($codigoHotel){
 	$url = 'http://localhost/proyectoHoteles/img?codigoHotel='.$codigoHotel.;
 	$curl = curl_init($url);
 
@@ -55,7 +55,7 @@ function getImagenes($codigoHotel){
 	//Hay que recorrer el array para mostrar todos los hoteles
 	//print_r($hoteles); -> Esto lo imprime por pantalla, para comprobar que funciona nuestra API
 	return $result;
-}
+}*/
 
 
 ?>
