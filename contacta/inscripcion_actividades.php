@@ -11,7 +11,7 @@
         $correo = $_POST['correo'];//
         $pass = $_POST['pass'];//
         $tipo_cuota = $_POST['tipo_cuota'];
-        $datosUsuario = array($nombre, $apellidos, $direccion, $centro, $telefono, $correo, $pass, $tipo_cuota);
+        $datosUsuario = array($nombre, $apellidos, $centro, $direccion, $telefono, $correo, $pass, $tipo_cuota);
         setcookie('usuario', serialize($datosUsuario), time()+3600, "/");
     }
     else if(isset($_COOKIE['usuario'])){
