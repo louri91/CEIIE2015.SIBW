@@ -5,8 +5,18 @@
     $queryCuotas = "SELECT * FROM ceiie2015.cuota";
     $resultadoCuotas = $conn->query($queryCuotas);
     $rowsCuotas = $resultadoCuotas->fetchAll();
-    if(isset($_COOKIE['Usuario'])){
-        
+    
+    if(isset($_COOKIE['usuario'])){
+        $cookieUsuario = $_COOKIE['usuario'];
+        $datos = unserialize($cookieUsuario);
+        $nombre = $datos[0];
+        $apellidos = $datos[1];
+        $centro = $datos[2];
+        $direccion = $datos[3];
+        $telefono = $datos[4];
+        $correo = $datos[5];
+        $pass = $datos[6];
+        $tipo_cuota = $datos[7];
     }
 ?>
 <style>
@@ -26,9 +36,8 @@
              <?php             
             foreach ($rowsCuotas as $cuota) 
             {
-                if($cuota['idCuota']=='1'){
-                    $tipoCuotaSeleccionada = $cuota['idCuota'];
-                    echo "<option selected value=".$cuota['idCuota'].">".$cuota['descripcionCuota']." -> ".$cuota['precioCuota']."€ </option>";
+                if(isset($tipo_cuota) && $tipo_cuota==$cuota['idCuota']){
+                    echo "<option selected value=".$tipo_cuota.">".$cuota['descripcionCuota']." -> ".$cuota['precioCuota']."€ </option>";
                 }
                 else
                 {
@@ -37,12 +46,12 @@
             }
              ?>
          </select>
-         <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
-         <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
-         <input type="text" name="centro" class="form-control" placeholder="Centro de Trabajo" required>
-         <input type="text" name="direccion" class="form-control" placeholder="Direccion" required>
-         <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required>
-         <input type="email" name="correo" class="form-control" placeholder="Dirección de correo" required>
+         <input type="text" name="nombre" class="form-control" placeholder="Nombre" value='<?php if(isset($nombre)){echo $nombre;}?>' required>
+         <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" value='<?php if(isset($apellidos)){echo $apellidos;}?>' required>
+         <input type="text" name="centro" class="form-control" placeholder="Centro de Trabajo" value='<?php if(isset($centro)){echo $centro;}?>' required>
+         <input type="text" name="direccion" class="form-control" placeholder="Direccion" value='<?php if(isset($direccion)){echo $direccion;}?>' required>
+         <input type="text" name="telefono" class="form-control" placeholder="Teléfono" value='<?php if(isset($telefono)){echo $telefono;}?>' required>
+         <input type="email" name="correo" class="form-control" placeholder="Dirección de correo" value='<?php if(isset($correo)){echo $correo;}?>' required>
          <input type="email" name="correo_conf" class="form-control" placeholder="Confirmar dirección de correo" required>
          <input type="password" name="pass" class="form-control" placeholder="Contraseña" required>
          <input type="password" name="pass_conf" class="form-control" placeholder="Confirmar contraseña" required>
