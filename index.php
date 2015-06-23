@@ -1,14 +1,19 @@
-<html>
+<html id="ceiie">
 <?php include 'header.php';?>
 <body><div id="panelCentral">
 <?php
 if(isset($_GET['categoria'])){
 	$categoria = isset($_GET['categoria']) ? $_GET['categoria']:'';
-} else{
+}else if(isset($_POST['categoria'])){
+	$categoria = isset($_POST['categoria']) ? $_POST['categoria']:'';
+} 
+else{
 	$categoria='index';
 }
 if(isset($_GET['p'])){
 	$paso = $_GET['p'];
+}else if(isset($_POST['p'])){
+	$paso = $_POST['p'];
 }
 if(isset($_GET['idPonencia'])){
 	include 'ponencias/ponencias.php';
@@ -21,7 +26,7 @@ switch ($categoria) {
 		include 'horario/horario.php';
 		break;
 	case 'inscripcion':
-		if(isset($_GET['p'])){
+		if(isset($_GET['p']) || isset($_POST['p'])){
 			switch ($paso) {
 				case 0:
 					include 'contacta/inscripcion.php';
@@ -74,8 +79,41 @@ switch ($categoria) {
 			if($_SESSION['nombre_perfil']=='admin'){
 				include 'admin/scriptCongresistas.php';
 			}
+			else{
+				include 'index/indexContent.php';
+			}
 		}
 		break;
+	case 'cuotas':
+		if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
+			if($_SESSION['nombre_perfil']=='admin'){
+				if(isset($_GET['cuota'])){
+					include 'admin/scriptCuotasAdmin.php';
+				}
+				else
+				{
+				include 'admin/cuotas.php';
+				}
+			}
+			else{
+				include 'index/indexContent.php';
+			}
+		}
+		break;
+	case 'actAdmin':
+		if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
+			if($_SESSION['nombre_perfil']=='admin'){
+				if(isset($_GET['id'])){
+					$id = $_GET['id'];
+					include 'admin/scriptActAdmin.php';
+				}
+			}
+			else{
+				include 'index/indexContent.php';
+			}
+		}
+		break;
+
 	case 'inscripcionAdmin':
 		if(isset($_SESSION['sesion_iniciada']) && $_SESSION['sesion_iniciada']==true){
 			if($_SESSION['nombre_perfil']=='admin'){
@@ -84,6 +122,8 @@ switch ($categoria) {
 						include 'admin/scriptInscripcionUsuarios.php';
 
 				}
+			}else{
+				include 'index/indexContent.php';
 			}
 		}
 		break;

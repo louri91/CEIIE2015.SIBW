@@ -1,4 +1,10 @@
-      <?php include 'apiConnect.php'; 
+      <?php 
+            if(!isset($_COOKIE['usuario'])){
+                echo '<script language="javascript">alert("Los datos de usuario son obligatorios");</script>';
+                header( "Refresh:0; url=index.php?categoria=inscripcion&p=0", false, 303);
+            }
+
+            include 'apiConnect.php'; 
         /*
           Incluimos la conexión a la API;
           */    
@@ -37,10 +43,20 @@
                 $habitacionesDisponibles = array(); 
                     foreach ($hoteles as $hotel => $value) {
                         $habitaciones = getHabitaciones($value['codigoHotel']);
-                            foreach ($habitaciones as $habitacion => $valueHabitacion) {
-                                array_push($habitacionesDisponibles, $valueHabitacion);
+                            if(count($habitaciones)>0)
+                            {
+                                foreach ($habitaciones as $habitacion => $valueHabitacion) {
+                                    array_push($habitacionesDisponibles, $valueHabitacion);
+                                }
                             }
                     }
+                echo '<fieldset class="fechas" style="width=10%;">';
+                echo '<legend><h2>Fechas: </h2></legend>';
+                echo '<br><p><h3>Entrada: </h3><br>';
+                echo '<input type="date" class="actividades" class="form-control" name="fechaEntrada" step="1" min="2015-06-02" max="2015-06-30" value="2015-06-04"><br>';
+                echo '<br><h3>Salida: </h3><br>';
+                echo '<input type="date" class="actividades" class="form-control" name="fechaSalida" step="1" min="2015-06-02" max="2015-06-30" value="2015-06-06"><br>';
+                echo '</p></fieldset>';
 
                 foreach ($hoteles as $hotel => $value) {
                 echo '<fieldset class="inscripcion" style="width:80%;">';
@@ -48,6 +64,7 @@
                 echo ' <p class="parrafo"><b>Descripción:</b><br> '.$value['descripcionHotel'];
                 echo '<br>';
                 echo '<br><b>Habitaciones Disponibles: </b><br>';
+
                 foreach ($habitacionesDisponibles as $habitacion => $valueHabitacion) {
                     if($valueHabitacion['Hotel_codigoHotel']==$value['codigoHotel']){
                     echo '<input type="checkbox" class="actividades" class="form-control" id="habitacion" name='.$valueHabitacion['numHabitacion'].' value='.$valueHabitacion['numHabitacion'].'>Habitación '.$valueHabitacion['tipoHabitacion'];

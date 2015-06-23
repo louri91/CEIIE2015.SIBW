@@ -68,64 +68,43 @@ function sliders()
 	swapImages();
 }
 
-function guardarValoresUsuario(formularioInscripcion){
+function enviar(){
+	
+	var xhr;
+	if (window.XMLHttpRequest) 
+        xhr = new XMLHttpRequest();
+    else if (window.ActiveXObject) 
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    else 
+        throw new Error("Ajax is not supported by your browser");
+		
+	xhr.open('POST', 'http://localhost/SIBW/v6.0/index.php', true); 
+	
+	var nombre = document.getElementById("nombre").value;
+	var apellidos = document.getElementById("apellidos").value;
+	var centro = document.getElementById("centro").value;
+	var direccion = document.getElementById("direccion").value;
+	var telefono = document.getElementById("telefono").value;
+	var correo = document.getElementById("correo").value;
+	var correo_conf = document.getElementById("correo_conf").value;
+	var pass = document.getElementById("pass").value;
+	var pass_conf = document.getElementById("pass_conf").value;
+	var tipo_cuota = document.getElementById("tipo_cuota").value;
+	var params = "categoria=inscripcion&p=1&nombre="+nombre+"&apellidos="+apellidos+"&centro="+centro+"&direccion="+direccion+"&telefono="+telefono+"&correo="+correo+"&correo_conf="+correo_conf+"&pass="+pass+"&pass_conf="+pass_conf+"&tipo_cuota="+tipo_cuota;
+	
 
-	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
-	{
-		alert("Los correos electrónicos tienen que ser iguales");
-		return false;
-	}
-	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
-	{
-		alert("Las contraseñas no coinciden");
-		return false;
-	}else{
-		return true;
-	}
-}
-
-
-
-function guardarValoresActividades(formularioActividades){
-
-	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
-	{
-		alert("Los correos electrónicos tienen que ser el mismo");
-		return false;
-	}
-	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
-	{
-		alert("Las contraseñas no coinciden");
-		return false;
-	}
-	else
-	{
-		document.cookie = 'Usuario' + "=" + formularioInscripcion.nombre.value + ';' + formularioInscripcion.apellidos.value + ';' + formularioInscripcion.centro.value + ';' + formularioInscripcion.direccion.value + ';' + formularioInscripcion.telefono.value + ';' + formularioInscripcion.correo.value + ';' + formularioInscripcion.pass.value + ';' + formularioInscripcion.tipo_cuota + ";"
-		alert("Datos almacenados correctamente");
-		return true;
-	}
-	return false;
-}
-
-function guardarValoresAlojamiento(formularioAlojamiento){
-
-	if(formularioInscripcion.correo.value != formularioInscripcion.correo_conf.value)
-	{
-		alert("Los correos electrónicos tienen que ser el mismo");
-		return false;
-	}
-	else if(formularioInscripcion.pass.value != formularioInscripcion.pass_conf.value)
-	{
-		alert("Las contraseñas no coinciden");
-		return false;
-	}
-	else
-	{
-		document.cookie = 'Usuario' + "=" + formularioInscripcion.nombre.value + ';' + formularioInscripcion.apellidos.value + ';' + formularioInscripcion.centro.value + ';' + formularioInscripcion.direccion.value + ';' + formularioInscripcion.telefono.value + ';' + formularioInscripcion.correo.value + ';' + formularioInscripcion.pass.value + ';' + formularioInscripcion.tipo_cuota + ";"
-		alert("Datos almacenados correctamente");
-		return true;
-	}
-	return false;
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Content-length", params.length);
+	xhr.setRequestHeader("Connection", "close");
+	
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+            if (xhr.status <= 303){ 
+                document.getElementById('ceiie').innerHTML = xhr.responseText;
+			}
+        }
+    };
+	xhr.send(params);
 }
 
 

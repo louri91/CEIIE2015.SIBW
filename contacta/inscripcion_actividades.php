@@ -1,30 +1,28 @@
 <?php 
-        include_once('dbConnect.php');
-        $conn=dbConnect();
-    if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['centro']) && isset($_POST['telefono']) && isset($_POST['correo']) && isset($_POST['pass']) && isset($_POST['tipo_cuota'])) 
-    {   
-        $nombre = $_POST['nombre'];//
-        $apellidos = $_POST['apellidos'];//
-        $centro = $_POST['centro'];
-        $direccion = $_POST['direccion'];
-        $telefono = $_POST['telefono'];//
-        $correo = $_POST['correo'];//
-        $pass = $_POST['pass'];//
-        $tipo_cuota = $_POST['tipo_cuota'];
+    header('Access-Control-Allow-Origin: *'); 
+    include_once('dbConnect.php');
+    $conn=dbConnect();
+    
+    if (isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['centro']) && isset($_POST['telefono']) && isset($_POST['correo']) && isset($_POST['pass']) && isset($_POST['tipo_cuota'])){ 
+        $nombre = trim($_POST['nombre']);//
+        $apellidos = trim($_POST['apellidos']);//
+        $centro = trim($_POST['centro']);
+        $direccion = trim($_POST['direccion']);
+        $telefono = trim($_POST['telefono']);//
+        $correo = trim($_POST['correo']);//
+        $pass = trim($_POST['pass']);//
+        $tipo_cuota = trim($_POST['tipo_cuota']);
         $datosUsuario = array($nombre, $apellidos, $centro, $direccion, $telefono, $correo, $pass, $tipo_cuota);
         setcookie('usuario', serialize($datosUsuario), time()+3600, "/");
     }
-    else if(isset($_COOKIE['usuario'])){
+    if(isset($_COOKIE['usuario'])){
         $cookieUsuario = $_COOKIE['usuario'];
         $datos = unserialize($cookieUsuario);
-        
     }
     else{
         echo '<script language="javascript">alert("Los datos de usuario son obligatorios");</script>';
         header( "Refresh:0; url=index.php?categoria=inscripcion&p=0", false, 303);
     }
-
-    
 
     if(isset($_COOKIE['usuario_actividades'])){
         $cookieUsuario = $_COOKIE['usuario_actividades'];

@@ -1,10 +1,12 @@
 <head>
 <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" http-equiv="content-type" content="width=device-width, initial-scale=1.0"/>
+   <meta content="text/html; charset=utf-8" />
    <link rel="stylesheet" href="css/styles.css">
    <link rel="stylesheet" href="css/menuResponsive.css">
    <script src="js/javascript.js"></script>
+   <script type="text/javascript" src="js/ajax.js"></script>
    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
    <title>CEIIE 2015</title>
    <div id='header-login'>
@@ -33,7 +35,6 @@
    <img id="bg" src="img/cabecera.jpg" alt="background"/>
       <nav style="padding-top:2%">
       <label for="show-menu" class="show-menu">Menu</label>
-      <input type="checkbox" id="show-menu" role="button">
       <ul id="menu">
       
       <li><a href="index.php?categoria=index">Inicio</a></li>
