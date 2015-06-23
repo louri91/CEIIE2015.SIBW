@@ -1,2 +1,0 @@
-Descargartelo: git pull
-Subir archivos: git add . | git commit -a (PONER COMENTARIO)Esc->ZZ | git push
